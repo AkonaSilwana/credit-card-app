@@ -154,11 +154,14 @@ const CardForm = () => {
           onChange={handleInputChange}
         />
          {errors.country && <span className="error-message">{errors.country}</span>}
+         <div className='buttonContainer'>
         <button type='submit' name='submit'>
           Save Card
         </button>
+        <GetCardDetails formDataList={formDataList as IFormInputValues[]} />
+        </div>
       </form>
-      <GetCardDetails formDataList={formDataList as IFormInputValues[]} />
+      
     </div>
   );
 }
