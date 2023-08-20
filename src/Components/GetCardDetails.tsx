@@ -10,6 +10,7 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import '../App.css';
 
 interface Details {
   formDataList: IFormInputValues[];
@@ -36,7 +37,7 @@ const GetCardDetails = ({ formDataList }: Details) => {
 
   return (
     <>
-      <Button variant="outlined" onClick={handleClickOpen}>
+      <Button  className="dialogButton customDialogButton" variant="outlined" onClick={handleClickOpen}>
         Card Details
       </Button>
       <Dialog onClose={handleClose} open={open}>

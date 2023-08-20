@@ -4,7 +4,7 @@ import 'react-credit-cards/es/styles-compiled.css';
 import '../App.css';
 import GetCardDetails from './GetCardDetails';
 import * as Yup from 'yup';
-import { error } from 'console';
+
 
 
 export interface IFormInputValues {
@@ -102,6 +102,14 @@ const CardForm = () => {
       localStorage.setItem('formDataList', JSON.stringify([formData]));
     }
    
+    setFormData({
+      cvc: '',
+      expiry: '',
+      focus: null,
+      name: '',
+      number: '',
+      country: '',
+    });
   };
  
   return (
@@ -118,6 +126,7 @@ const CardForm = () => {
           type='text'
           name='name'
           placeholder='Name'
+          value={formData.name}
           onChange={handleInputChange}
           onFocus={handleInputFocus}
         />
@@ -126,6 +135,7 @@ const CardForm = () => {
           type='tel'
           name='number'
           placeholder='Card Number'
+          value={formData.number}
           onChange={handleInputChange}
           onFocus={handleInputFocus}
         />
@@ -134,6 +144,7 @@ const CardForm = () => {
           type='text'
           name='expiry'
           placeholder='MM/YY expiry'
+          value={formData.expiry}
           onChange={handleInputChange}
           onFocus={handleInputFocus}
         />
@@ -142,6 +153,7 @@ const CardForm = () => {
           type='tel'
           name='cvc'
           placeholder='CVC'
+          value={formData.cvc}
           onChange={handleInputChange}
           onFocus={handleInputFocus}
         />
@@ -151,12 +163,13 @@ const CardForm = () => {
           type='text'
           name='country'
           placeholder='Country'
+          value={formData.country}
           onChange={handleInputChange}
         />
          {errors.country && <span className="error-message">{errors.country}</span>}
          <div className='buttonContainer'>
         <button type='submit' name='submit'>
-          Save Card
+          SAVE CARD
         </button>
         <GetCardDetails formDataList={formDataList as IFormInputValues[]} />
         </div>
