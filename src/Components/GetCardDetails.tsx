@@ -18,7 +18,6 @@ interface Details {
 
 const GetCardDetails = ({ formDataList }: Details) => {
   const [open, setOpen] = useState(false);
-  console.log(formDataList);
   if (!formDataList) {
     return null; 
   }
