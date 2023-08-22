@@ -4,6 +4,8 @@ import 'react-credit-cards/es/styles-compiled.css';
 import '../App.css';
 import GetCardDetails from './GetCardDetails';
 import * as Yup from 'yup';
+import Select from 'react-select';
+import countriesList from './CountriesList';
 
 
 
@@ -58,6 +60,13 @@ const CardForm = () => {
       ...prevFormData,
       [name]: value,
     }));
+  };
+  const getCountriesOptions = () => {
+    const countries = Object.entries(countriesList).map(([code, data]) => ({
+      value: data.name,
+      label: data.name,
+    }));
+    return countries;
   };
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -159,14 +168,19 @@ const CardForm = () => {
           onFocus={handleInputFocus}
         />
          {errors.cvc && <span className="error-message">{errors.cvc}</span>}
-        <input
-          id = 'country'
-          type='text'
+         <Select
+          options={getCountriesOptions()}
+          isSearchable
+          placeholder='Select a country...'
           name='country'
-          placeholder='Country'
-          value={formData.country}
-          onChange={handleInputChange}
-        />
+          onChange={(selectedOption) =>
+          handleInputChange({
+         target: { name: 'country', value: selectedOption?.value || '' },
+    } as React.ChangeEvent<HTMLInputElement>) // Create a synthetic event
+  }
+  className='Select'
+/>
+
          {errors.country && <span className="error-message">{errors.country}</span>}
          <div className='buttonContainer'>
         <button type='submit' name='submit'>

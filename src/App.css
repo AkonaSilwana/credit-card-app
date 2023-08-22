@@ -24,6 +24,18 @@ input {
   display: block;
   padding: 8px; 
 }
+.Select{
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s;
+  width: 270px; 
+  max-width: 300px; 
+  height: 35px;
+  margin-bottom: 20px;
+
+}
 button {
   width: 100px;
   height: 40px;
@@ -43,6 +55,7 @@ button {
   white-space: nowrap;
 
 }
+
 .error-message {
   color: red;
   font-size: small;
